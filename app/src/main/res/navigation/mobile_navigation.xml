@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_camera">
+    <fragment
+        android:id="@+id/nav_permissions_settings"
+        android:name="it.wazabit.dev.extension.ui.permissions.PermissionsSettingsFragment"
+        android:label="Permissions"
+        />
+    <fragment
+        android:id="@+id/nav_file_system"
+        android:name="it.wazabit.dev.extension.ui.file.FileSystemFragment"
+        android:label="File system"
+        tools:layout="@layout/fragment_file_system" >
+        <action
+            android:id="@+id/action_nav_file_system_to_fileDetailsFragment"
+            app:destination="@id/fileDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fileDetailsFragment"
+        android:name="it.wazabit.dev.extension.ui.file.FileDetailsFragment"
+        android:label="fragment_file_details"
+        tools:layout="@layout/fragment_file_details" >
+        <argument
+            android:name="uri"
+            app:argType="android.net.Uri" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="it.wazabit.dev.extension.ui.camera.CameraFragment"
+        android:label="@string/camera_title"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_nav_camera_to_camera2Fragment"
+            app:destination="@id/camera2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/camera2Fragment"
+        android:name="it.wazabit.dev.extension.ui.camera.Camera2Fragment"
+        android:label="Camera 2"
+        tools:layout="@layout/fragment_camera2" />
+</navigation>

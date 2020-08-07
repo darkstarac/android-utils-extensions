@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    tools:context=".ui.camera.CameraFragment">
+
+    <Button
+        android:id="@+id/fragment_camera_surface_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera surface"/>
+
+    <Button
+        android:id="@+id/fragment_camera_picture_preview_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Picture Preview"/>
+
+    <ImageView
+        android:id="@+id/fragment_camera_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#000"
+
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+</LinearLayout>

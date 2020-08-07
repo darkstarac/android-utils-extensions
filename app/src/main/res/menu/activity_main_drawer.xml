@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_file_system"
+            android:icon="@drawable/ic_baseline_attach_file_24"
+            android:title="@string/menu_file" />
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_baseline_camera_24"
+            android:title="@string/menu_camera" />
+        <item
+            android:id="@+id/nav_permissions_settings"
+            android:icon="@drawable/ic_baseline_security_24"
+            android:title="@string/menu_permissions_settings" />
+    </group>
+</menu>

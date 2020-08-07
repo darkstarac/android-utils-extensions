@@ -1,0 +1,18 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/permissions_header">
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_baseline_camera_24"
+            app:key="camera"
+            app:title="@string/camera_title" />
+
+        <SwitchPreferenceCompat
+            app:icon="@drawable/ic_baseline_attach_file_24"
+            app:key="external_storage"
+            app:title="@string/external_storage" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
