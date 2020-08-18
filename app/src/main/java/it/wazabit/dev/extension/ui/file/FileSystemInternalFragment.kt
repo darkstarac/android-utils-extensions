@@ -127,7 +127,7 @@ class FileSystemInternalFragment : Fragment() {
 
     private val copyToInternalStorageLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()){
         it?.let { uri ->
-            val file = FileUtils.saveToInternalStorage(requireContext(),uri)
+            val file = FileUtils.saveToFilesDir(requireContext(),uri)
             with(viewAdapter){
                 items.add(file)
                 notifyDataSetChanged()

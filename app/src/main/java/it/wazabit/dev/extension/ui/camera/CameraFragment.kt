@@ -2,6 +2,7 @@ package it.wazabit.dev.extension.ui.camera
 
 import android.Manifest
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import it.wazabit.dev.extension.Extensions
 import it.wazabit.dev.extension.R
+import it.wazabit.dev.extensions.FileUtils
 import it.wazabit.dev.extensions.activity.checkPermission
+import it.wazabit.dev.extensions.activity.toast
+import it.wazabit.dev.extensions.setSafeOnClickListener
 import kotlinx.android.synthetic.main.fragment_camera.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -72,8 +76,19 @@ class CameraFragment : Fragment() {
         }
 
         viewModel.preview.observe(viewLifecycleOwner, Observer {
+            Timber.d("Bitmap: ${it.width}X${it.height}")
             fragment_camera_image_view.setImageBitmap(it)
         })
+
+        fragment_camera_picture_edit_action.setSafeOnClickListener {
+            viewModel.preview.value?.let {bitmap ->
+                val file = createTempFile()
+                file.outputStream().use {outputStream ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
+                }
+
+            } ?: toast("Nothing to edit")
+        }
     }
 
     companion object {

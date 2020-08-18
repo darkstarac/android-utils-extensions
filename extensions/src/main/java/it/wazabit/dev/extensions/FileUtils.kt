@@ -18,9 +18,8 @@ data class FileInfo(
 
 object FileUtils {
 
-    //TODO some renaming... look at thifference between filesdir and cachedir
 
-    fun saveToInternalStorage(context: Context,uri:Uri): File {
+    fun saveToFilesDir(context: Context, uri:Uri): File {
         val fileInfo = context.contentResolver.getFileInfo(uri)
 
         context.openFileOutput(fileInfo.name, Context.MODE_PRIVATE).use { outPutStream ->
@@ -30,6 +29,18 @@ object FileUtils {
         }
 
         return File(context.filesDir,fileInfo.name)
+    }
+
+    fun saveToCacheDir(context: Context, uri:Uri): File {
+        val fileInfo = context.contentResolver.getFileInfo(uri)
+
+        context.openFileOutput(fileInfo.name, Context.MODE_PRIVATE).use { outPutStream ->
+            context.contentResolver.openInputStream(uri).use { inputStream ->
+                inputStream?.copyTo(outPutStream)
+            }
+        }
+
+        return File(context.cacheDir,fileInfo.name)
     }
 
     fun getFileInfo(context: Context,uri: Uri): FileInfo {
