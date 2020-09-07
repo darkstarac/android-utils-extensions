@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/bitmapEditFragment">
+    app:startDestination="@id/nav_network">
     <fragment
         android:id="@+id/nav_permissions_settings"
         android:name="it.wazabit.dev.extension.ui.permissions.PermissionsSettingsFragment"
@@ -49,4 +49,9 @@
         android:name="it.wazabit.dev.extension.ui.camera.BitmapEditFragment"
         android:label="Edit"
         tools:layout="@layout/fragment_bitmap_edit" />
+    <fragment
+        android:id="@+id/nav_network"
+        android:name="it.wazabit.dev.extension.ui.network.NetworkFragment"
+        android:label="Network"
+        tools:layout="@layout/fragment_network" />
 </navigation>

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
+@Suppress("UNCHECKED_CAST")
 abstract class RecyclerViewAdapter<T:Any,V:RecyclerView.ViewHolder> : RecyclerView.Adapter<V>(){
 
     protected val onClickListener: View.OnClickListener

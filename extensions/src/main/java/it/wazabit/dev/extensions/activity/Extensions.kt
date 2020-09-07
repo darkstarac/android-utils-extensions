@@ -89,11 +89,11 @@ fun Activity.checkPermission(launcher: ActivityResultLauncher<String>,message:St
         shouldShowRequestPermissionRationale(permission) -> {
             AlertDialog.Builder(this)
                 .setMessage(message)
-                .setPositiveButton("OK") { dialog, which ->
+                .setPositiveButton("OK") { dialog, _ ->
                     launcher.launch(permission)
                     dialog.dismiss()
                 }
-                .setNegativeButton("Cancel") { dialog, which ->
+                .setNegativeButton("Cancel") { dialog, _ ->
                     continuation(false)
                     dialog.dismiss()
                 }

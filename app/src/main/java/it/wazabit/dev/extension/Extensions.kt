@@ -3,16 +3,15 @@ package it.wazabit.dev.extension
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import it.wazabit.dev.extension.di.DaggerApplicationComponent
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class Extensions : Application(){
 
     lateinit var sharedPreferences: SharedPreferences
 
-    val  applicationComponent by lazy {
-        DaggerApplicationComponent.factory().create(applicationContext)
-    }
+
 
     override fun onCreate() {
         super.onCreate()
