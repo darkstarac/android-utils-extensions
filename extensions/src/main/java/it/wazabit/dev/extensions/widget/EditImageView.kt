@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
-import timber.log.Timber
 import kotlin.math.max
 import kotlin.math.min
 
@@ -105,10 +104,6 @@ class EditImageView : View {
     }
 
     fun cut() : Bitmap{
-        Timber.d("Selection rect ${selectionSurface.selectionRect} | ${selectionSurface.selectionRect.width()}X${selectionSurface.selectionRect.height()} ratio $ratio")
-//        Timber.d("Bitmap rect $editedBitmapRect")
-        Timber.d("Bitmap dimensions ${bitmap!!.width}X${bitmap!!.height}")
-//        Bitmap croppedBitmap = Bitmap.createBitmap(originalBitmap, 10, 10, originalBitmap.getWidth() - 20, originalBitmap.getHeight() - 20)
 
         val (width:Int,height:Int) = selectionSurface.selectionRect.let {
             (selectionSurface.scaledWidth*bitmap!!.width).toInt() to (selectionSurface.scaledHeight*bitmap!!.height).toInt()
@@ -116,9 +111,6 @@ class EditImageView : View {
         val (x:Int,y:Int) = selectionSurface.selectionRect.let {
             (selectionSurface.scaledLeft*bitmap!!.width).toInt() to (selectionSurface.scaledTop*bitmap!!.height).toInt()
         }
-
-        Timber.d("Scaled starting point  $x $y")
-        Timber.d("Scaled selection rect dimensions $width X $height")
 
         return  Bitmap.createBitmap(
             bitmap!!,
