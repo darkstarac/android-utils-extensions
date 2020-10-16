@@ -22,7 +22,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 
-
 /**
  * Show a loading [DialogFragment].
  *
@@ -53,7 +52,6 @@ fun FragmentActivity.loading(loading: Boolean, dialog: DialogFragment?, argument
         }
     }
 }
-
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
@@ -154,15 +152,16 @@ fun Fragment.toast(message:CharSequence,duration:Int = Toast.LENGTH_LONG){
     }
 }
 
-
-
-
 fun Context.dpToPx(value:Float):Float{
     return resources.displayMetrics.let{metrics ->
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, metrics)
     }
 }
 
+fun Activity.startWithAnimation(intent: Intent, bundle: Bundle? = null) {
+    startActivity(intent, bundle)
+    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+}
 
 inline fun <reified T : Any> Activity.startActivity(
     requestCode: Int = -1,
@@ -184,7 +183,6 @@ inline fun <reified T : Any> Context.startActivity(options: Bundle? = null, noin
     intent.init()
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-
         startActivity(intent, options)
     } else {
         startActivity(intent)

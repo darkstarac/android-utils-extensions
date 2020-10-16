@@ -119,3 +119,13 @@ fun View.hideFade(
 fun TextView.markdown() {
     paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 }
+
+fun TextView.setHtmlText(text: String) {
+    setText(
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
+        } else {
+            Html.fromHtml(text)
+        }
+    )
+}
